@@ -1,6 +1,6 @@
 import { appDispatcher } from './Dispatcher'
 
-import req from '../Request/Request'
+import {loadUser, loadList} from '../Request/Request'
 
 export const ActionType = {
   DISPLAY_TITLE: 'DISPLAY_TITLE',
@@ -26,7 +26,7 @@ export const Actions = {
     })
   },
   loadList: (query) => {
-    req.loadList(query, (list) => {
+    loadList(query, (list) => {
       appDispatcher.dispatch({
         actionType: ActionType.LOAD_LIST,
         query,
@@ -35,7 +35,7 @@ export const Actions = {
     })
   },
   loadUser: () => {
-    req.loadUser((user) => {
+    loadUser((user) => {
       appDispatcher.dispatch({
         actionType: ActionType.LOAD_USERDATA,
         user
