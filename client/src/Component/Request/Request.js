@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 // out: callback(response)
-function loadUser (callback) {
+export function loadUser (callback) {
   request.post('/api/status')
     .type('form')
     .send({
@@ -18,7 +18,7 @@ function loadUser (callback) {
 
 // in: query
 // out: callback(response)
-function loadList (query, callback) {
+export function loadList (query, callback) {
   const requestTime = String((new Date()).getTime())
   if (requestTime > window.localStorage.loadList) window.localStorage['loadList'] = requestTime
   const sendQuery = query ? query : ''
@@ -37,6 +37,6 @@ function loadList (query, callback) {
     })
 }
 
-module.exports = {
-  loadUser, loadList
-}
+// module.exports = {
+//   loadUser, loadList
+// }

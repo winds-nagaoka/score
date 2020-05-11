@@ -1,8 +1,7 @@
 const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
-  entry: path.join(__dirname, 'client/src/index.js'),
+  entry: ['@babel/polyfill', path.join(__dirname, 'client/src/index.js')],
   output: {
     path: path.join(__dirname, 'client/build'),
     filename: 'bundle.js'
@@ -14,7 +13,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['es2015', 'react'],
+          presets: ['@babel/preset-env', '@babel/react'],
           compact: true
         }
       },
