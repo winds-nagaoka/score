@@ -1,0 +1,222 @@
+@charset "UTF-8";
+.auth .contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  margin: 45px 0 0 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+  contain: size style layout;
+  z-index: 1; }
+
+.auth .pre {
+  margin: 16px 0;
+  padding: 0 8px;
+  font-size: 13px;
+  text-align: left; }
+  .auth .pre p {
+    margin: 0;
+    padding: 0;
+    color: #333; }
+
+.auth .information h2 {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  margin: 0;
+  padding-left: 8px;
+  background: #f2f2f2;
+  font-size: 16px;
+  font-weight: bold; }
+
+.auth .information .list {
+  width: calc(100% - 16px);
+  margin: 0 8px; }
+
+.auth .information label {
+  font-size: 13px; }
+
+.auth .information span {
+  display: block; }
+
+.auth .information .score-number {
+  display: block;
+  font-size: 30px; }
+
+.auth .input, .auth .display {
+  padding: 8px 0; }
+  .auth .input.multi, .auth .display.multi {
+    padding: 4px 0; }
+  .auth .input label, .auth .display label {
+    font-size: 13px;
+    color: #888; }
+  .auth .input input[type="text"], .auth .display input[type="text"] {
+    -webkit-appearance: none;
+    display: block;
+    width: calc(100% - 8px - 2px);
+    margin: 0;
+    padding: 6px 4px;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    color: #333;
+    font-family: "source-han-sans-japanese", sans-serif;
+    font-size: 13px; }
+  .auth .input .auto-correct, .auth .display .auto-correct {
+    padding: 5px;
+    color: #666;
+    font-size: 13px;
+    cursor: pointer; }
+  .auth .input .radio-input, .auth .display .radio-input {
+    display: flex; }
+    .auth .input .radio-input input[type="radio"], .auth .display .radio-input input[type="radio"] {
+      display: none;
+      margin: 0;
+      padding: 0;
+      border: none; }
+      .auth .input .radio-input input[type="radio"] + label, .auth .display .radio-input input[type="radio"] + label {
+        display: inline-block;
+        margin: 0;
+        padding: 10px 0px;
+        background: #eee;
+        color: #888;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1;
+        flex-grow: 1;
+        transition: .1s;
+        cursor: pointer; }
+        .auth .input .radio-input input[type="radio"] + label span, .auth .display .radio-input input[type="radio"] + label span {
+          display: inline-block;
+          min-width: 60px; }
+      .auth .input .radio-input input[type="radio"]:checked + label, .auth .display .radio-input input[type="radio"]:checked + label {
+        background-color: #488aff;
+        color: #fff; }
+        .auth .input .radio-input input[type="radio"]:checked + label.highlight-high, .auth .display .radio-input input[type="radio"]:checked + label.highlight-high {
+          background-color: #B60005; }
+        .auth .input .radio-input input[type="radio"]:checked + label.highlight-low, .auth .display .radio-input input[type="radio"]:checked + label.highlight-low {
+          background-color: #B60005; }
+  .auth .input .radio-display > label, .auth .display .radio-display > label {
+    display: inline-block;
+    width: 100%;
+    min-width: 60px;
+    margin: 4px 0;
+    padding: 10px 0;
+    background-color: #488aff;
+    color: #fff;
+    font-size: 13px;
+    text-align: center; }
+    .auth .input .radio-display > label.highlight-high, .auth .display .radio-display > label.highlight-high {
+      background-color: #B60005; }
+    .auth .input .radio-display > label.highlight-low, .auth .display .radio-display > label.highlight-low {
+      background-color: #B60005; }
+
+.auth .add-data {
+  margin: 0 1px 8px;
+  font-size: 13px;
+  color: #888;
+  text-align: right;
+  cursor: pointer; }
+  .auth .add-data i {
+    padding-right: .2em; }
+
+.auth select {
+  outline: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  width: 100%;
+  margin: 0;
+  padding: 6px 4px;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  font-size: 13px; }
+  .auth select option {
+    background-color: #fff;
+    color: #333; }
+  .auth select::-ms-expand {
+    display: none; }
+  .auth select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #828c9a; }
+
+.auth .button {
+  margin: 48px 8px; }
+  .auth .button button {
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 10px;
+    border: 0;
+    line-height: 44px;
+    background: #b80006;
+    color: #fff;
+    font-size: 13px;
+    font-family: Meiryo, メイリオ, "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic Pro", "\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3", "MS PGothic", "\FF2D\FF33 \FF30\30B4\30B7\30C3\30AF", Arial, sans-serif;
+    cursor: pointer;
+    transition: all ease-in-out .1s; }
+    .auth .button button:hover {
+      background: #990005;
+      color: #fff;
+      transition: all ease-in-out 0s; }
+    .auth .button button:active {
+      background: #990005;
+      color: #fff;
+      transition: all ease-in-out .1s; }
+    .auth .button button i {
+      margin-right: .2em;
+      color: #fff;
+      transition: all ease-in-out .1s; }
+    .auth .button button:hover i {
+      color: #fff;
+      transition: all ease-in-out 0s; }
+    .auth .button button[disabled] {
+      background: #eee;
+      color: #888; }
+      .auth .button button[disabled]:hover {
+        background: #eee;
+        color: #888; }
+      .auth .button button[disabled]:active {
+        background: #eee;
+        color: #888; }
+      .auth .button button[disabled] i {
+        color: #888; }
+      .auth .button button[disabled]:hover i {
+        color: #888; }
+
+.title-ja {
+  font-family: "source-han-sans-japanese", sans-serif; }
+
+.title-en {
+  font-family: "source-han-sans-japanese", sans-serif; }
+
+.composer {
+  font-family: "source-han-sans-japanese", sans-serif; }
+
+.arranger {
+  font-family: "source-han-sans-japanese", sans-serif; }
+
+.publisher {
+  font-family: "source-han-sans-japanese", sans-serif; }
+
+.box-label {
+  font-weight: lighter;
+  font-family: "clarendon-urw-extra-narrow",serif; }
+
+.locate {
+  font-family: "clarendon-urw-extra-narrow",serif; }
+
+.score-number {
+  font-family: "clarendon-urw-extra-narrow",serif; }

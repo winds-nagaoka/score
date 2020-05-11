@@ -1,0 +1,61 @@
+.edit {
+  width: 100%;
+  max-width: 600px;
+  margin: 8px auto;
+  font-size: 13px;
+
+  // Auth.scss で設定
+  // .pre {
+  //   margin: 16px 0;
+  //   padding: 0 8px;
+  //   font-size: 13px;
+
+  //   p {
+  //     margin: 0;
+  //     padding: 0;
+  //   }
+  // }
+
+  .score-number {
+    display: block;
+    font-size: 30px;
+    // text-align: center;
+  }
+
+  .button {
+
+    p {
+      margin: 0 0 2px;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+
+      & + label {
+        display: block;
+        margin: 0 0 8px;
+        padding: 10px 0px;
+        background: #ddd;
+        color: #333;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1;
+        flex-grow: 1;
+        transition: .1s;
+        cursor: pointer;
+        transition: all ease-in-out .1s;
+
+        &:hover {
+          background: hsl(358,100,36%);
+          color: #fff;
+          transition: all ease-in-out 0s;
+        }
+      }
+
+      &:checked + label {
+        background-color: #B60005;
+        color: #fff;
+      }
+    }
+  }
+}

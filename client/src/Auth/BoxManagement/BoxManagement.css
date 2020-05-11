@@ -1,0 +1,221 @@
+.box-management {
+  width: 100%;
+  max-width: 600px;
+  margin: 8px auto;
+  font-size: 13px;
+  text-align: center; }
+  .box-management .box-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; }
+    .box-management .box-list .box {
+      width: calc(33% - 2px - 32px);
+      margin: 16px;
+      padding: 0 0 8px 0;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column; }
+      .box-management .box-list .box:hover {
+        background: #eee; }
+      @media (max-width: 768px) {
+        .box-management .box-list .box {
+          width: calc(33% - 2px - 16px);
+          margin: 8px; } }
+      .box-management .box-list .box .label {
+        padding: 1px 3px;
+        border-radius: 2px;
+        font-size: 2em;
+        font-family: "clarendon-urw-extra-narrow",serif; }
+      .box-management .box-list .box i {
+        color: #cba97b;
+        font-size: 5em; }
+      .box-management .box-list .box .locate {
+        font-weight: 200;
+        font-family: "source-han-sans-japanese", sans-serif; }
+      .box-management .box-list .box.disabled {
+        border: 1px solid #ddd;
+        background: #fcfcfc;
+        color: #888; }
+        .box-management .box-list .box.disabled:hover {
+          background: #ddd; }
+        .box-management .box-list .box.disabled .label {
+          color: #888; }
+        .box-management .box-list .box.disabled i {
+          color: #ccc; }
+  .box-management .end-label {
+    margin: 6px auto;
+    padding: 24px 0;
+    color: #ccc;
+    font-size: 13px;
+    text-align: center; }
+  .box-management .buttons {
+    margin: 8px 0;
+    display: flex; }
+    .box-management .buttons .add-box {
+      display: block;
+      width: 100%;
+      border: 0;
+      padding: 10px 0;
+      margin: 0 8px;
+      background: #ccc;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all ease-in-out .1s; }
+      .box-management .buttons .add-box:hover {
+        background: #b80006;
+        color: #fff;
+        transition: all ease-in-out 0s; }
+      .box-management .buttons .add-box:active {
+        background: #990005;
+        color: #fff;
+        transition: all ease-in-out .1s; }
+      .box-management .buttons .add-box:first-child {
+        margin-right: 4px; }
+      .box-management .buttons .add-box:last-child {
+        margin-left: 4px; }
+
+.modal-detail-box {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  border-top: 1px solid #cccccc;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  background: white;
+  overflow: auto;
+  outline: none;
+  z-index: 5; }
+  .modal-detail-box .modal-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .modal-detail-box .modal-header div:first-child {
+      padding-left: .5em;
+      font-size: 13px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .modal-detail-box .modal-header .close {
+      -webkit-appearance: none;
+      margin: 0 5px 0 auto;
+      padding: .2em;
+      border: 0;
+      background: #fff;
+      color: #666;
+      font-size: 24px;
+      cursor: pointer; }
+  .modal-detail-box .detail-content {
+    width: calc(100% - 16px);
+    margin: 0 auto;
+    padding: 0 8px 8px;
+    font-size: 13px; }
+    .modal-detail-box .detail-content .flex-frame {
+      display: flex; }
+      .modal-detail-box .detail-content .flex-frame .box-label {
+        margin: 0 8px 8px;
+        padding: 8px;
+        border-radius: 5px;
+        background: #eee;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .modal-detail-box .detail-content .flex-frame .box-label .label {
+          margin: 0 16px;
+          font-family: "clarendon-urw-extra-narrow", serif; }
+      .modal-detail-box .detail-content .flex-frame .detail-information {
+        flex: 2; }
+        .modal-detail-box .detail-content .flex-frame .detail-information label {
+          color: #888;
+          font-size: 13px; }
+        .modal-detail-box .detail-content .flex-frame .detail-information span {
+          display: block; }
+        .modal-detail-box .detail-content .flex-frame .detail-information .locate {
+          display: block;
+          font-size: 16px;
+          font-family: "source-han-sans-japanese", sans-serif; }
+        .modal-detail-box .detail-content .flex-frame .detail-information .no-data {
+          font-size: 13px;
+          color: #666; }
+        .modal-detail-box .detail-content .flex-frame .detail-information input[type="text"] {
+          -webkit-appearance: none;
+          display: block;
+          width: calc(100% - 8px - 2px);
+          margin: 0;
+          padding: 0px 4px;
+          border: 1px solid #cccccc;
+          border-radius: 0;
+          color: #333;
+          font-family: "source-han-sans-japanese", sans-serif;
+          font-size: 16px; }
+    .modal-detail-box .detail-content .buttons {
+      display: flex;
+      flex-direction: row; }
+      .modal-detail-box .detail-content .buttons button {
+        width: 100%;
+        border: 0;
+        padding: 10px;
+        margin: 8px 0 0;
+        background: #ccc;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all ease-in-out .1s; }
+        .modal-detail-box .detail-content .buttons button:hover {
+          background: #b80006;
+          color: #fff;
+          transition: all ease-in-out 0s; }
+        .modal-detail-box .detail-content .buttons button:active {
+          background: #990005;
+          color: #fff;
+          transition: all ease-in-out .1s; }
+        .modal-detail-box .detail-content .buttons button:first-child {
+          margin-right: 4px; }
+        .modal-detail-box .detail-content .buttons button:last-child {
+          margin-left: 4px; }
+    .modal-detail-box .detail-content .links {
+      display: flex;
+      flex-direction: row; }
+      .modal-detail-box .detail-content .links a {
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 10px;
+        margin: 8px 0 0;
+        background: #ccc;
+        color: #000;
+        font-size: 1em;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all ease-in-out .1s; }
+        .modal-detail-box .detail-content .links a:hover {
+          background: #b80006;
+          color: #fff;
+          transition: all ease-in-out 0s; }
+        .modal-detail-box .detail-content .links a:active {
+          background: #990005;
+          color: #fff;
+          transition: all ease-in-out .1s; }
+        .modal-detail-box .detail-content .links a:first-child {
+          margin-right: 4px; }
+        .modal-detail-box .detail-content .links a:last-child {
+          margin-left: 4px; }
+
+.modal-detail-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 4; }

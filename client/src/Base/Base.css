@@ -1,0 +1,137 @@
+.base .header {
+  width: 50%;
+  margin: 24px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .base .header > svg {
+    width: 40%;
+    max-width: 100px;
+    margin: 0 auto;
+    fill: rgba(71, 139, 255, 0.2);
+    animation: grow 10s linear 0s infinite; }
+  .base .header > span {
+    position: absolute;
+    padding: 6px;
+    color: #333; }
+    .base .header > span span {
+      display: block;
+      text-align: center; }
+    .base .header > span span:first-child {
+      font-family: "ten-mincho",serif;
+      font-style: italic;
+      font-size: 16px; }
+      .base .header > span span:first-child svg {
+        fill: #333; }
+    .base .header > span span:last-child {
+      font-family: "ten-mincho",serif;
+      font-size: 26px; }
+
+.base .link {
+  width: 100%;
+  margin: 48px 0 0 0;
+  font-size: 14px;
+  display: flex; }
+  .base .link div, .base .link a {
+    display: block;
+    width: 50%;
+    text-align: center;
+    text-decoration: none; }
+    .base .link div span, .base .link a span {
+      display: inline-block;
+      padding: 8px; }
+  .base .link div span {
+    border-bottom: 2px solid #478bff;
+    color: #478bff; }
+  .base .link a span {
+    border-bottom: 2px solid #fff;
+    color: #333; }
+    .base .link a span:hover {
+      background: #eee; }
+
+.base .form {
+  width: calc(100% - 32px - 2px);
+  margin: 0 auto;
+  padding: 16px;
+  border: 0;
+  background: #fff; }
+  .base .form h2 {
+    margin: 0 0 1em 0;
+    border-bottom: 2px solid orange;
+    font-size: 1.4em; }
+  .base .form .error-message {
+    margin: 16px 0 0;
+    padding: 16px;
+    border: 1px solid #cc3333;
+    background: #ebadad;
+    font-size: 13px; }
+  .base .form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 13px; }
+  .base .form input {
+    -webkit-appearance: none;
+    display: block;
+    width: calc(100% - 24px - 2px);
+    margin: 0 0 8px;
+    padding: 8px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 1em; }
+    .base .form input:first-child {
+      margin: 0 0 16px 0; }
+  .base .form button {
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    margin: 16px 0;
+    background: #ddd;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all ease-in-out .1s; }
+    .base .form button i {
+      font-size: 24px; }
+    .base .form button:hover {
+      background: #478bff;
+      color: #fff;
+      transition: all ease-in-out 0s; }
+    .base .form button:active {
+      background: #478bff;
+      color: #fff;
+      transition: all ease-in-out .1s; }
+    .base .form button[disabled] {
+      color: #888; }
+      .base .form button[disabled]:hover {
+        background: #ddd;
+        color: #888; }
+      .base .form button[disabled]:active {
+        background: #ddd;
+        color: #888; }
+
+.base .footer {
+  text-align: center;
+  font-family: "source-han-sans-japanese", sans-serif; }
+  .base .footer a {
+    display: inline-block;
+    margin: 8px auto;
+    padding: 4px;
+    background: #ccc;
+    color: #333;
+    text-decoration: none; }
+    .base .footer a:hover {
+      background: #ffa600;
+      color: #fff;
+      transition: all ease-in-out 0s; }
+    .base .footer a:active {
+      background: #e69500;
+      color: #fff;
+      transition: all ease-in-out 0s; }
+  .base .footer span {
+    display: inline-block;
+    margin: 32px auto;
+    color: #666;
+    font-size: 13px; }

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.setting {
+  margin: 16px 0 0 0;
+  font-size: 13px; }
+  .setting .form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+    .setting .form label {
+      margin: 8px 0 0 0;
+      color: #888;
+      font-size: .8em; }
+    .setting .form input {
+      -webkit-appearance: none;
+      display: block;
+      width: calc(100% - 8px - 2px);
+      margin: 0;
+      padding: 6px 4px;
+      border: 1px solid #cccccc;
+      border-radius: 0;
+      color: #333;
+      font-family: "source-han-sans-japanese", sans-serif;
+      font-size: 13px; }
+    .setting .form div {
+      width: 100%;
+      margin: 8px 0;
+      text-align: right; }
+      .setting .form div button {
+        -webkit-appearance: none;
+        display: block;
+        width: 100%;
+        margin: 16px 0;
+        padding: 0 24px;
+        border: 0;
+        line-height: 44px;
+        font-size: 13px;
+        font-family: Meiryo, メイリオ, "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic Pro", "\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3", "MS PGothic", "\FF2D\FF33 \FF30\30B4\30B7\30C3\30AF", Arial, sans-serif;
+        cursor: pointer;
+        transition: all ease-in-out .1s; }
+        .setting .form div button.save {
+          background: #b80006;
+          color: white;
+          font-weight: 600; }
+          .setting .form div button.save:hover {
+            background: #990005;
+            transition: all ease-in-out 0s; }
+          .setting .form div button.save:active {
+            background: #990005; }
+          .setting .form div button.save[disabled] {
+            background: #cccccc; }
+        .setting .form div button.cancel {
+          background: #cccccc;
+          color: #333; }
+          .setting .form div button.cancel:hover {
+            background: #e6e6e6;
+            transition: all ease-in-out 0s; }
+          .setting .form div button.cancel:active {
+            background: #b3b3b3; }

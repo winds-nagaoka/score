@@ -1,0 +1,238 @@
+.member-menu {
+
+  .header {
+    position: fixed;
+    height: 44px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    text-align: center;
+    z-index: 10;
+
+    &.no-border {
+      border: 0;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      width: 80%;
+      overflow: hidden;
+
+      p {
+        margin: 0;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .label {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    // color: #0D5783;
+    color: #488aff;
+    z-index: 11;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.back {
+      left: 8px;
+      width: auto;
+
+      a {
+        // color: #054469;
+        color: #488aff;
+        text-decoration: none;
+
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-right: .1em;
+          font-size: 1.6em;
+        }
+      }
+
+      // i {
+      //   margin-right: .1em;
+      //   font-size: 1.6em;
+      // }
+
+      // a {
+      //   // color: #054469;
+      //   color: #488aff;
+      //   text-decoration: none;
+      // }
+    }
+  }
+
+  .menu-background {
+    display: none;
+    position: fixed;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    // -webkit-transition: opacity .6s ease-in-out;
+    transition: .3s ease-in-out;
+
+    &.open {
+      display: block;/*カバーを表示*/
+      opacity: .35;
+      animation: menu-background-show .3s ease-in-out 0s;
+    }
+
+    @keyframes menu-background-show{
+      from{
+          opacity: 0;
+      }
+      to{
+          opacity: .35;
+      }
+    }
+
+      // .hoge.show{
+      //     display: block;
+      //     animation: show 1s linear 0s;
+      // }
+  }
+
+  .menu-content {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 12;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background: #fff;
+    transition: transform .3s ease-in-out;
+    -webkit-transform: translateX(-105%);
+    transform: translateX(-105%);
+    -webkit-overflow-scrolling: touch;
+
+    &.open {
+      -webkit-transform: translateX(0%);
+      transform: translateX(0%);
+      box-shadow: 6px 0 25px rgba(0,0,0,.15);
+    }
+
+    .account-info {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      width: calc(100% - 8px);
+      padding: 4px;
+      background: #fff;
+
+      display: flex;
+      align-items: center;
+
+      img {
+        display: block;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+
+      span {
+        // flex: 2;
+        display: block;
+        margin-left: 8px;
+        color: #333;
+        font-size: 20px;
+        font-family: "ten-mincho",serif;
+      }
+    }
+
+    ol {
+      margin: 6px 0;
+      padding: 0;
+      list-style: none;
+      line-height: 48px;
+
+      a {
+        color: #333;
+        text-decoration: none;
+
+        &:hover {
+          background: #ccc;
+        }
+
+        &:active {
+          background: #ccc;
+        }
+
+        div {
+          padding: 0 0 0 8px;
+
+          i {
+            display: inline-block;
+            width: 2em;
+            color: #666;
+            font-size: 1.2em;
+            text-align: center;
+          }
+        }
+      }
+
+      .logout {
+        padding: 0;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+
+        // &:hover {
+        //   background: #eee;
+        // }
+
+        &:active {
+          background: #eee;
+        }
+
+        div {
+          padding: 0 0 0 8px;
+
+          i {
+            display: inline-block;
+            width: 2em;
+            color: #666;
+            font-size: 1.2em;
+            text-align: center;
+          }
+        }
+      }
+
+      .active {
+        background: #eee;
+
+        a {
+
+          &:hover {
+            background: #ccc;
+          }
+
+          &:active {
+            background: #ccc;
+          }
+        }
+      }
+
+    }
+  }
+}

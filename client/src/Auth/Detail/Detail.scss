@@ -1,0 +1,139 @@
+.detail {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 8px;
+  font-size: 13px;
+
+  // Auth.scss の設定に追加
+  .information {
+
+    .display {
+
+      span {
+        font-size: 16px;
+      }
+
+      .locate {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+
+        .box, .dash, .score {
+          margin: 8px;
+          padding: 8px;
+          background: #f7f7f7;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .label {
+          font-size: 13px;
+          color: #888;
+          font-weight: 200;
+          font-family: "source-han-sans-japanese", sans-serif;
+        }
+
+        .box-locate {
+          font-size: 13px;
+          color: #333;
+          font-weight: 200;
+          font-family: "source-han-sans-japanese", sans-serif;
+        }
+
+        .box-label {
+          display: block;
+          font-size: 56px;
+          // font-weight: bold;
+          text-align: center;
+        }
+
+        .dash {
+          display: block;
+          margin: 0 4px;
+          font-size: 52px;
+        }
+
+        .score-number {
+          display: block;
+          font-size: 56px;
+          text-align: center;
+        }
+      }
+
+      .no-data {
+        color: #ccc;
+      }
+
+      // .title-ja {
+      //   font-size: 16px;
+      // }
+
+      // .title-en {
+      //   font-size: 16px;
+      // }
+    }
+  }
+
+  .button {
+    margin: 48px 8px;
+
+    button.suggest {
+      background: hsl(358,100,36%);
+      color: #fff;
+
+      &:hover {
+        background: hsl(358,100,30%);
+        color: #fff;
+      }
+      &:active {
+        background: hsl(358,100,30%);
+        color: #fff;
+      }
+    }
+  }
+
+  .links {
+    margin: 48px 8px;
+
+    a {
+      display: block;
+      width: calc(100% - 20px);
+      margin: 0;
+      padding: 0 10px;
+      border: 0;
+      line-height: 44px;
+      background: #eee;
+      color: #333;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all ease-in-out .1s;
+
+      &:hover {
+        background: hsl(358,100,36%);
+        color: #fff;
+        transition: all ease-in-out 0s;
+      }
+      &:active {
+        background: hsl(358,100,30%);
+        color: #fff;
+        transition: all ease-in-out .1s;
+      }
+
+      i {
+        margin-right: .2em;
+        color: #555;
+        transition: all ease-in-out .1s;
+      }
+
+      &:hover i {
+        color: #fff;
+        transition: all ease-in-out 0s;
+      }
+    }
+  }
+}
