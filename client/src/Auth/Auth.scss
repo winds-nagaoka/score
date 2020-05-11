@@ -1,0 +1,314 @@
+.auth {
+
+  .contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    margin: 45px 0 0 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    contain: size style layout;
+    z-index: 1;
+  }
+
+  // 各Componentの前文
+  .pre {
+    margin: 16px 0;
+    padding: 0 8px;
+    font-size: 13px;
+    text-align: left;
+
+    p {
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+  }
+
+  // 情報表示
+  .information {
+
+    h2 {
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 0;
+
+      margin: 0;
+      padding-left: 8px;
+
+      background: #f2f2f2;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .list {
+      width: calc(100% - 16px);
+      margin: 0 8px;
+    }
+
+    // .information {
+
+      label {
+        font-size: 13px;
+      }
+
+      span {
+        display: block;
+      }
+
+      .score-number {
+        display: block;
+        font-size: 30px;
+        // text-align: center;
+      }
+    // }
+  }
+
+  // 入力フォームの設定
+  .input, .display {
+    // margin: 16px 0;
+    padding: 8px 0;
+
+    &.multi {
+      padding: 4px 0;
+    }
+
+    label {
+      font-size: 13px;
+      color: #888;
+    }
+
+    input[type="text"] {
+      -webkit-appearance: none;
+      display: block;
+      width: calc(100% - 8px - 2px);
+      margin: 0;
+      padding: 6px 4px;
+      border: 1px solid rgba(204,204,204,1);
+      border-radius: 0;
+      color: #333;
+      // font-family: Arial, sans-serif;
+      // font-family: "roboto", "source-han-sans-japanese", sans-serif;
+      font-family: "source-han-sans-japanese", sans-serif;
+      font-size: 13px;
+    }
+
+    .auto-correct {
+      padding: 5px;
+      color: #666;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .radio-input {
+      display: flex;
+
+      input[type="radio"] {
+        display: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        & + label {
+          display: inline-block;
+          margin: 0;
+          padding: 10px 0px;
+          background: #eee;
+          color: #888;
+          font-size: 13px;
+          text-align: center;
+          line-height: 1;
+          flex-grow: 1;
+          transition: .1s;
+          cursor: pointer;
+
+          span {
+            display: inline-block;
+            min-width: 60px;
+          }
+        }
+
+        &:checked + label {
+          background-color: #488aff;
+          color: #fff;
+
+          &.highlight-high {
+            background-color: #B60005;
+          }
+
+          &.highlight-low {
+            background-color: #B60005;
+          }
+        }
+      }
+    }
+
+    .radio-display {
+      & > label {
+        display: inline-block;
+        width: 100%;
+        min-width: 60px;
+        margin: 4px 0;
+        padding: 10px 0;
+        background-color: #488aff;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+
+        &.highlight-high {
+          background-color: #B60005;
+        }
+
+        &.highlight-low {
+          background-color: #B60005;
+        }
+      }
+    }
+  }
+
+  .add-data {
+    margin: 0 1px 8px;
+    font-size: 13px;
+    color: #888;
+    text-align: right;
+    cursor: pointer;
+
+    i {
+      padding-right: .2em;
+    }
+  }
+
+  select {
+    outline:none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    background: none transparent;
+    vertical-align: middle;
+    font-size: inherit;
+    color: inherit;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    width: 100%;
+    margin: 0;
+    padding: 6px 4px;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    font-size: 13px;
+
+    option{
+      background-color: #fff;
+      color: #333;
+    }
+    &::-ms-expand {
+      display: none;
+    }
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #828c9a;
+    }
+  }
+
+  .button {
+    margin: 48px 8px;
+
+    button {
+      -webkit-appearance: none;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0 10px;
+      border: 0;
+      line-height: 44px;
+      background: hsl(358,100,36%);
+      color: #fff;
+      font-size: 13px;
+      font-family: Meiryo, メイリオ, "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic Pro", "\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3", "MS PGothic", "\FF2D\FF33 \FF30\30B4\30B7\30C3\30AF", Arial, sans-serif;
+      cursor: pointer;
+      transition: all ease-in-out .1s;
+
+      &:hover {
+        background: hsl(358,100,30%);
+        color: #fff;
+        transition: all ease-in-out 0s;
+      }
+      &:active {
+        background: hsl(358,100,30%);
+        color: #fff;
+        transition: all ease-in-out .1s;
+      }
+
+      i {
+        margin-right: .2em;
+        color: #fff;
+        transition: all ease-in-out .1s;
+      }
+
+      &:hover i {
+        color: #fff;
+        transition: all ease-in-out 0s;
+      }
+
+      &[disabled] {
+        background: #eee;
+        color: #888;
+
+        &:hover {
+          background: #eee;
+          color: #888;
+        }
+        &:active {
+          background: #eee;
+          color: #888;
+        }
+        i {
+          color: #888;
+        }
+        &:hover i {
+          color: #888;
+        }
+      }
+    }
+  }
+}
+
+// font-family setting
+.title-ja {
+  font-family: "source-han-sans-japanese", sans-serif;
+}
+
+.title-en {
+  font-family: "source-han-sans-japanese", sans-serif;
+}
+
+.composer {
+  font-family: "source-han-sans-japanese", sans-serif;
+}
+
+.arranger {
+  font-family: "source-han-sans-japanese", sans-serif;
+}
+
+.publisher {
+  font-family: "source-han-sans-japanese", sans-serif;
+}
+
+.box-label {
+  font-weight: lighter;
+  // font-family: "source-han-sans-japanese", sans-serif;
+  font-family: "clarendon-urw-extra-narrow",serif;
+}
+
+.locate {
+  font-family: "clarendon-urw-extra-narrow",serif;
+}
+
+.score-number {
+  font-family: "clarendon-urw-extra-narrow",serif;
+}

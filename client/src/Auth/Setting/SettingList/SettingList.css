@@ -1,0 +1,62 @@
+@charset "UTF-8";
+.setting-list .link-frame {
+  width: 100%;
+  margin: 0 auto 16px; }
+  .setting-list .link-frame label {
+    display: block;
+    padding: 16px 0 8px 16px;
+    color: #888;
+    font-weight: 600; }
+  .setting-list .link-frame .links {
+    margin: 0 0 16px 0;
+    border-top: 1px solid #ccc; }
+    .setting-list .link-frame .links a {
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+      background: white;
+      color: #4d4d4d;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between; }
+      .setting-list .link-frame .links a:hover {
+        background: #eee;
+        color: #666666; }
+      .setting-list .link-frame .links a:active {
+        color: #333333; }
+      .setting-list .link-frame .links a span {
+        display: inline-block; }
+        .setting-list .link-frame .links a span:first-child {
+          padding-left: 16px;
+          font-size: 1em; }
+        .setting-list .link-frame .links a span:nth-child(2) {
+          margin-left: auto;
+          padding-right: 8px;
+          color: #888;
+          text-align: right;
+          font-size: .8em; }
+        .setting-list .link-frame .links a span:last-child {
+          padding-right: 12px;
+          color: #888;
+          text-align: right;
+          font-size: 1.2em; }
+    .setting-list .link-frame .links button {
+      -webkit-appearance: none;
+      display: block;
+      width: 100%;
+      margin: 0 auto 32px;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid #ccc;
+      background: white;
+      color: red;
+      line-height: 44px;
+      font-family: Meiryo, メイリオ, "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic Pro", "\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3", "MS PGothic", "\FF2D\FF33 \FF30\30B4\30B7\30C3\30AF", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all ease-in-out .1s; }
+      .setting-list .link-frame .links button:hover {
+        font-weight: 600;
+        transition: all ease-in-out 0s; }

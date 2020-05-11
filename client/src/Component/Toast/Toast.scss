@@ -1,0 +1,31 @@
+.toast {
+  position: absolute;
+  top: -70px;
+  left: 44px;
+  right: 10px;
+  margin: auto;
+  border-radius: 10px;
+  background: rgba(0,0,0,.9);
+  color: white;
+  transform: translateY(80px);
+  transition-delay: initial;
+  transition-property: none;
+  transition: transform .2s ease-in-out;
+  z-index: 99;
+
+  & > div {
+    padding: 16px 16px;
+    font-size: 13px;
+
+    b {
+      font-weight: 600;
+    }
+  }
+
+  &.remove {
+    transform: translateY(-80px);
+    transition-delay: initial;
+    transition-property: none;
+    transition: transform .6s ease-in-out;
+  }
+}
