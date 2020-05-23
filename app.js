@@ -14,15 +14,6 @@ const box = require('./server/box')
 const mail = require('./server/mail')
 const lib = require('./server/lib')
 
-// HTTPSを使用する(local用)
-// const https = require('https')
-// var privateKey = fs.readFileSync( '/root/localhost.key' );
-// var certificate = fs.readFileSync( '/root/localhost.crt' );
-// https.createServer({
-//   key: privateKey,
-//   cert: certificate
-// }, app).listen(3000);
-
 // HTTPを使用する(公開用)
 const http = require('http')
 app.listen(3000)
@@ -34,28 +25,12 @@ app.use(compression({
   memLevel: 9
 }))
 
-// CORSを許可する(memberアプリテスト用)
+// CORSを許可する(memberアプリ用)
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
-  // res.header('Access-Control-Allow-Origin', 'http://192.168.1.22:3001')
-  // res.header('Access-Control-Allow-Origin', 'https://member.winds-n.com')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
-
-// クライアントアプリを返す
-const client = './client/build'
-app.use('/', express.static(client))
-app.use('/reg', express.static(client))
-app.use('/score', express.static(client))
-app.use('/score/add', express.static(client))
-app.use('/score/edit', express.static(client))
-app.use('/score/edit/:id', express.static(client))
-app.use('/score/detail/:id', express.static(client))
-app.use('/score/box', express.static(client))
-app.use('/score/csv', express.static(client))
-app.use('/score/setting', express.static(client))
-app.use('/score/setting/:path', express.static(client))
 
 // api設定
 app.post('/api/adduser', (req, res) => {
