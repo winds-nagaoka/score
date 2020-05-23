@@ -1,5 +1,7 @@
 const fetch = require('node-fetch')
 
+const mailConfig = require('../../secrets/mail')
+
 function listData (docs) {
   var list = ''
   const title = '"status", "number", "score label", "box label", '
@@ -79,14 +81,13 @@ function scoreBased (s) {
 }
 
 function sendEmail (to, name, subject, body, attach, callback) {
-  fetch('https://api.winds-n.com/submit/add.php', {
-  // fetch('http://api.ryo4004.net/submit/index.php', {
+  fetch(mailConfig.requestMailPath, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({sendpass:'pX951sVg1cVKopUU', to, name, subject, body, attach})
+    body: JSON.stringify({sendpass: mailConfig.sendPass, to, name, subject, body, attach})
   }).then(res => callback(res))
 }
 
@@ -95,13 +96,9 @@ const nodeMailer = require('nodemailer')
 const mailSetting = {
   host: 'mail.winds-n.com',
   auth: {
-    // user: 'contact@winds-n.com',
     user: 'noreply@winds-n.com',
-    // dovecot のパスワード
-    // pass: '6SHDTEZt6kZ7qggUFFNSlTxsB119N6vu', // contact
-    pass: 'u5sMmQ2eMQW6Wx2RzzeC1YTOCoOTUXpq', // noreply
+    pass: mailConfig.dovecotPass.noreply,
     port: '465'
-    // port: '587'
   },
   tls: {rejectUnauthorized: false},
   debug:true
