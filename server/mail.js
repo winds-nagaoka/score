@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 
-const mailConfig = require('../../secrets/mail')
+const mailConfig = require('../../../secrets/mail')
 
 function listData (docs) {
   var list = ''
