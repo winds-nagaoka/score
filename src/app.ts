@@ -602,7 +602,7 @@ app.post('/api/setting/username', (req, res) => {
   const text = req.body.text
   console.log('[' + lib.showTime() + '] api/setting/username: ' + userid + ', ' + text)
   auth.checkToken(userid, token, (err, user) => {
-    if (err) return res.json({ status: false })
+    if (err || !user) return res.json({ status: false })
     auth.changeName(user.userid, text, (err) => {
       if (err) return res.json({ status: false })
       res.json({ status: true })
@@ -620,7 +620,7 @@ app.post('/api/setting/email', (req, res) => {
     return res.json({ status: false })
   }
   auth.checkToken(userid, token, (err, user) => {
-    if (err) return res.json({ status: false })
+    if (err || !user) return res.json({ status: false })
     auth.changeMail(user.userid, text, (err) => {
       if (err) return res.json({ status: false })
       res.json({ status: true })
