@@ -6100,6 +6100,10 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
+"secrets@ssh://git@github.com:ryo4004/secrets.git#add-typescript":
+  version "1.0.0"
+  resolved "ssh://git@github.com:ryo4004/secrets.git#c3f976ef0479bbfc63948b68499e05772b1af801"
+
 "semver@2 || 3 || 4 || 5", semver@^5.5.0, semver@^5.6.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
