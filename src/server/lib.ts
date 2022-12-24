@@ -1,6 +1,7 @@
+import crypto from "crypto"
+
 function getHash (pass) {
   const salt = '::HXAuymPGKKcThn6n'
-  const crypto = require('crypto')
   const hashsum = crypto.createHash('sha512')
   hashsum.update(pass + salt)
   return hashsum.digest('hex')

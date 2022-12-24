@@ -91,7 +91,7 @@ function sendEmail (to, name, subject, body, attach, callback) {
   }).then(res => callback(res))
 }
 
-const nodeMailer = require('nodemailer')
+import nodeMailer from "nodemailer"
 
 const mailSetting = {
   host: 'mail.winds-n.com',

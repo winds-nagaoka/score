@@ -17,7 +17,7 @@ const lib = require('./server/lib')
 import http from "http"
 app.listen(3000)
 
-const compression = require('compression')
+import compression from "compression"
 app.use(compression({
   threshold: 0,
   level: 9,
@@ -82,7 +82,7 @@ app.post('/api/auth', (req, res) => {
   })
 })
 
-const request = require('superagent')
+import request from "superagent"
 
 function authAPI (send, callback) {
   request.post('https://auth.winds-n.com/auth').type('form').send(send)
