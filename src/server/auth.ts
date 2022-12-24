@@ -1,19 +1,19 @@
-import path from "path"
-import NeDB from "nedb"
+import path from 'path'
+import NeDB from 'nedb'
 
-import { lib } from "./lib"
+import { lib } from './lib'
 
 const authDB = new NeDB({
   filename: path.join(__dirname, 'database/auth.db'),
   autoload: true,
-  timestampData: true
+  timestampData: true,
 })
 
 // ユーザー情報をアップデートする
 // in: user[object](たぶん)
 // out: callback(err)
-function updateUser (user, callback) {
-  authDB.update({userid: user.userid}, user, {}, (err, n) => {
+function updateUser(user, callback) {
+  authDB.update({ userid: user.userid }, user, {}, (err, n) => {
     if (err) return callback(err)
     callback(null)
   })
@@ -22,8 +22,8 @@ function updateUser (user, callback) {
 // ユーザー情報を取得する
 // in: userid
 // out: callback(user[object])
-function getUser (userid, callback) {
-  authDB.findOne({userid}, (err, user) => {
+function getUser(userid, callback) {
+  authDB.findOne({ userid }, (err, user) => {
     if (err || user === null) return callback(null)
     callback(user)
   })
@@ -32,13 +32,13 @@ function getUser (userid, callback) {
 // ユーザーを新規追加する
 // in: userid, passwd
 // out: callback(token, userkey)
-function addUser (userid, passwd, callback) {
+function addUser(userid, passwd, callback) {
   const hash = lib.getHash(passwd)
   const token = lib.getAuthToken(userid)
-  const regTime = (new Date()).getTime()
+  const regTime = new Date().getTime()
   const lastLoginTime = regTime
   const name = userid
-  const reg = {userid, hash, token, regTime, lastLoginTime, name}
+  const reg = { userid, hash, token, regTime, lastLoginTime, name }
   authDB.insert(reg, (err, newdoc) => {
     if (err) return callback(null)
     callback(token)
@@ -48,11 +48,11 @@ function addUser (userid, passwd, callback) {
 // ユーザーを削除する
 // in: userid, passwd
 // out: callback(token, userkey)
-function deleteUser (userid, passwd, callback) {
+function deleteUser(userid, passwd, callback) {
   const hash = lib.getHash(passwd)
   getUser(userid, (user) => {
     if (!user || user.hash !== hash) return callback(null)
-    authDB.remove({userid}, {}, (err, numRemoved) => {
+    authDB.remove({ userid }, {}, (err, numRemoved) => {
       if (err) return callback(null)
       callback(numRemoved)
     })
@@ -62,10 +62,10 @@ function deleteUser (userid, passwd, callback) {
 // ログイン処理
 // in: userid, passwd
 // out: callback(err, token)
-function login (userid, passwd, callback) {
+function login(userid, passwd, callback) {
   const hash = lib.getHash(passwd)
   const token = lib.getAuthToken(userid)
-  const lastLoginTime = (new Date()).getTime()
+  const lastLoginTime = new Date().getTime()
   getUser(userid, (user) => {
     if (!user || user.hash !== hash) return callback(true, null)
     user.token = token
@@ -79,30 +79,30 @@ function login (userid, passwd, callback) {
 
 // in: userid, token
 // out: callback(err, user[object])
-function checkToken (userid, token, callback) {
+function checkToken(userid, token, callback) {
   getUser(userid, (user) => {
     if (!user || user.token !== token) return callback(true, null)
     callback(null, user)
   })
 }
 
-function changeName (userid, name, callback) {
+function changeName(userid, name, callback) {
   console.log('[listDB] changeDBName')
-  authDB.update({userid}, {$set: {name}}, {}, (err, newdoc) => {
+  authDB.update({ userid }, { $set: { name } }, {}, (err, newdoc) => {
     if (err) return callback(err)
     return callback(null)
   })
 }
 
-function changeMail (userid, email, callback) {
+function changeMail(userid, email, callback) {
   console.log('[listDB] changeDBName')
-  authDB.update({userid}, {$set: {email}}, {}, (err, newdoc) => {
+  authDB.update({ userid }, { $set: { email } }, {}, (err, newdoc) => {
     if (err) return callback(err)
     return callback(null)
   })
 }
 
-function checkPass (userid, oldPass, newPass, callback) {
+function checkPass(userid, oldPass, newPass, callback) {
   const oldHash = lib.getHash(oldPass)
   const newHash = lib.getHash(newPass)
   getUser(userid, (user) => {
@@ -115,7 +115,7 @@ function checkPass (userid, oldPass, newPass, callback) {
   })
 }
 
-function changeAdmin (userid, request, callback) {
+function changeAdmin(userid, request, callback) {
   getUser(userid, (user) => {
     if (!user) return callback(null)
     user.admin = request
@@ -127,5 +127,13 @@ function changeAdmin (userid, request, callback) {
 }
 
 export const auth = {
-  getUser, addUser, deleteUser, login, checkToken, changeName, changeMail, checkPass, changeAdmin
+  getUser,
+  addUser,
+  deleteUser,
+  login,
+  checkToken,
+  changeName,
+  changeMail,
+  checkPass,
+  changeAdmin,
 }

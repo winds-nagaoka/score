@@ -1,12 +1,12 @@
-import path from "path"
-import NeDB from "nedb"
+import path from 'path'
+import NeDB from 'nedb'
 
 const deleteDB = new NeDB({
   filename: path.join(__dirname, 'database/delete.db'),
-  autoload: true
+  autoload: true,
 })
 
-function addDelete (data, callback) {
+function addDelete(data, callback) {
   deleteDB.insert(data, (err, newdoc) => {
     if (err) return callback(err)
     callback(null)
@@ -14,5 +14,5 @@ function addDelete (data, callback) {
 }
 
 export const del = {
-  addDelete
+  addDelete,
 }
