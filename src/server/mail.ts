@@ -1,6 +1,6 @@
 import fetch from "node-fetch"
 
-const mailConfig = require('../../../secrets/mail')
+import { secrets } from "secrets/mail"
 
 function listData (docs) {
   var list = ''
@@ -81,13 +81,13 @@ function scoreBased (s) {
 }
 
 function sendEmail (to, name, subject, body, attach, callback) {
-  fetch(mailConfig.requestMailPath, {
+  fetch(secrets.requestMailPath, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({sendpass: mailConfig.sendPass, to, name, subject, body, attach})
+    body: JSON.stringify({sendpass: secrets.sendPass, to, name, subject, body, attach})
   }).then(res => callback(res))
 }
 
@@ -97,7 +97,7 @@ const mailSetting = {
   host: 'mail.winds-n.com',
   auth: {
     user: 'noreply@winds-n.com',
-    pass: mailConfig.dovecotPass.noreply,
+    pass: secrets.dovecotPass.noreply,
     port: '465'
   },
   tls: {rejectUnauthorized: false},
