@@ -6,7 +6,14 @@ const boxDB = new NeDB({
   autoload: true,
 })
 
-type Document = { status: boolean; number: number; label: string; locate: string | boolean; time: boolean }
+type Document = {
+  status: boolean
+  number: number
+  label: string
+  locate: string | boolean
+  time: number | boolean
+  _id?: string
+}
 
 function loadBox(callback: (docs: Document[]) => void) {
   boxDB
@@ -30,15 +37,16 @@ function addBox(callback: (err: Error | null, label: string | null) => void) {
     .find({})
     .sort({ time: -1 })
     .limit(1)
-    .exec((err, docs) => {
+    .exec((err, docs: Document[]) => {
       if (err) return callback(err, null)
-      if (docs.length === 0) {
-        var docs = [{ status: true, number: 0, label: '', locate: false, time: false }]
+      let newDocs = docs
+      if (newDocs.length === 0) {
+        newDocs = [{ status: true, number: 0, label: '', locate: false, time: false }]
       }
-      var reg = docs[docs.length - 1]
+      var reg = newDocs[newDocs.length - 1]
       reg.status = true
       reg.time = new Date().getTime()
-      reg.number = parseInt(reg.number) + 1
+      reg.number = parseInt(String(reg.number)) + 1
       reg.label = calcLabel(reg.number)
       reg.locate = false
       delete reg._id
@@ -81,7 +89,7 @@ export const box = {
 }
 
 function calcLabel(value: number) {
-  const valueMap = {
+  const valueMap: Record<number, string> = {
     0: 'A',
     1: 'B',
     2: 'C',
@@ -116,11 +124,12 @@ function calcLabel(value: number) {
   //  }
   var reg = new RegExp('(' + Object.keys(valueMap).join('|') + ')', 'g')
   var res = ''
-  if (value === 0) return '0'
-  while (value > 0) {
-    s = (value - 1) % 26
+  let newValue = value
+  if (newValue === 0) return '0'
+  while (newValue > 0) {
+    const s = (newValue - 1) % 26
     res = valueMap[s] + res
-    value = parseInt((value - 1) / 26)
+    newValue = parseInt(String((newValue - 1) / 26))
   }
   return res
 }

@@ -7,7 +7,7 @@ import { lib } from './lib'
 
 import { del } from './delete'
 
-type Score = {}
+type Score = { status: boolean | string }
 
 const scoreDB = new NeDB({
   filename: path.join(__dirname, 'database/score.db'),
@@ -81,7 +81,7 @@ function loadScoreAll(callback: (docs: Score[]) => void) {
     })
 }
 
-function loadData(id: string, callback: (docs: Score[] | null) => void) {
+function loadData(id: string, callback: (docs: Score | null) => void) {
   scoreDB.findOne({ _id: id }, (err, docs) => {
     if (err) return callback(null)
     delete docs._id
@@ -133,8 +133,9 @@ function searchInput(target: string, query: string, callback: (docs: Score[] | n
   if (query === '') return callback(null)
   // console.log(target, query)
   const s = new RegExp(lib.escapeReg(query), 'i')
-  var searchQuery = new Object()
-  searchQuery[target] = s
+  const searchQuery = {
+    [target]: s,
+  }
   // console.log(searchQuery)
   scoreDB.find(searchQuery, (err: Error, docs: Score[]) => {
     if (err) return callback(null)

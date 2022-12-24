@@ -64,7 +64,7 @@ function listing(s: any) {
     }
   }
   // console.log(list)
-  result = list.slice(0, -2)
+  const result = list.slice(0, -2)
   // console.log(result)
   return result
 }

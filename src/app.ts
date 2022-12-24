@@ -89,8 +89,9 @@ app.post('/api/auth', (req, res) => {
 })
 
 import request from 'superagent'
+import type { Session, User } from './types/types'
 
-function authAPI(send, callback) {
+function authAPI(send: { session: Session }, callback: (user: User | false) => void) {
   request
     .post('https://auth.winds-n.com/auth')
     .type('form')
@@ -313,7 +314,7 @@ app.post('/api/member/detail', (req, res) => {
   // }
 })
 
-function fixComposerArranger(data) {
+function fixComposerArranger(data: any) {
   if (Array.isArray(data.composer)) {
     const composerCount = data.composer.length
     let blank = []
