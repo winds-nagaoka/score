@@ -1,8 +1,8 @@
-import fetch from 'node-fetch'
+import fetch, { Response } from 'node-fetch'
 
 import { secrets } from 'secrets/mail'
 
-function listData(docs) {
+function listData(docs: any) {
   var list = ''
   const title =
     '"status", "number", "score label", "box label", ' +
@@ -52,11 +52,11 @@ function listData(docs) {
   return title + list
 }
 
-function env(s) {
+function env(s: any) {
   return '"' + s + '"'
 }
 
-function listing(s) {
+function listing(s: any) {
   var list = ''
   for (var i = 0; i < s.length; i++) {
     if (s[i] !== '') {
@@ -69,7 +69,7 @@ function listing(s) {
   return result
 }
 
-function status(s) {
+function status(s: any) {
   if (s === 'true') {
     return 'OK'
   } else {
@@ -77,7 +77,7 @@ function status(s) {
   }
 }
 
-function scoreType(s) {
+function scoreType(s: any) {
   if (s === '1') {
     return 'コピー譜'
   } else {
@@ -85,7 +85,7 @@ function scoreType(s) {
   }
 }
 
-function scoreLack(s) {
+function scoreLack(s: any) {
   if (s === '2') {
     return '未確認'
   } else if (s === '1') {
@@ -95,7 +95,7 @@ function scoreLack(s) {
   }
 }
 
-function scoreStatus(s) {
+function scoreStatus(s: any) {
   if (s === '2') {
     return '貸出中'
   } else if (s === '1') {
@@ -105,7 +105,7 @@ function scoreStatus(s) {
   }
 }
 
-function scoreBased(s) {
+function scoreBased(s: any) {
   if (s === '1') {
     return '未処理'
   } else {
@@ -113,7 +113,14 @@ function scoreBased(s) {
   }
 }
 
-function sendEmail(to, name, subject, body, attach, callback) {
+function sendEmail(
+  to: string,
+  name: string,
+  subject: string,
+  body: string,
+  attach: any,
+  callback: (res: Response) => void
+) {
   fetch(secrets.requestMailPath, {
     method: 'POST',
     headers: {
@@ -140,8 +147,9 @@ const mailSetting = {
 const smtp = nodeMailer.createTransport(mailSetting)
 
 import { lib } from './lib'
+import { User } from '../types/types'
 
-function sendEmailDovecot(user, list, callback) {
+function sendEmailDovecot(user: User, list: string, callback: (result: boolean) => void) {
   console.log('[' + lib.showTime() + '] sendUpdateEmail to: ', user.email)
   const mailText =
     user.name +
@@ -160,7 +168,7 @@ function sendEmailDovecot(user, list, callback) {
     'https://winds-n.com'
   const mailContents = {
     from: 'ザ・ウィンド・アンサンブル <noreply@winds-n.com>',
-    to: user.email,
+    to: user.email || '',
     subject: 'ウィンズの楽譜データ',
     // html: '',
     text: mailText,

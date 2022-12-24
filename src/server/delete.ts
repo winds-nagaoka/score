@@ -6,7 +6,7 @@ const deleteDB = new NeDB({
   autoload: true,
 })
 
-function addDelete(data, callback) {
+function addDelete(data: any, callback: (err: Error | null) => void) {
   deleteDB.insert(data, (err, newdoc) => {
     if (err) return callback(err)
     callback(null)

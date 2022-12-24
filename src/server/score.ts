@@ -7,13 +7,15 @@ import { lib } from './lib'
 
 import { del } from './delete'
 
+type Score = {}
+
 const scoreDB = new NeDB({
   filename: path.join(__dirname, 'database/score.db'),
   autoload: true,
   timestampData: true,
 })
 
-function loadScore(query, callback) {
+function loadScore(query: string, callback: (docs: Score[] | null) => void) {
   if (query === '') {
     scoreDB
       .find({ status: 'true' })
@@ -70,7 +72,7 @@ function loadScore(query, callback) {
   }
 }
 
-function loadScoreAll(callback) {
+function loadScoreAll(callback: (docs: Score[]) => void) {
   scoreDB
     .find({ status: 'true' })
     .sort({ createdAt: 1 })
@@ -79,7 +81,7 @@ function loadScoreAll(callback) {
     })
 }
 
-function loadData(id, callback) {
+function loadData(id: string, callback: (docs: Score[] | null) => void) {
   scoreDB.findOne({ _id: id }, (err, docs) => {
     if (err) return callback(null)
     delete docs._id
@@ -88,7 +90,7 @@ function loadData(id, callback) {
 }
 
 // 新規登録時に最新の情報を取得
-function loadLatest(callback) {
+function loadLatest(callback: (docs: Score[] | null) => void) {
   // scoreDB.find({}).sort({time: -1}).limit(1).exec((err, docs) => {
   scoreDB
     .find({})
@@ -103,7 +105,7 @@ function loadLatest(callback) {
 }
 
 // 新規登録時の重複チェック
-function checkData(num, callback) {
+function checkData(num: number, callback: (err: Error | null, docs: Score[] | null) => void) {
   scoreDB.findOne({ number: num }, (err, docs) => {
     if (err) return callback(err, null)
     if (!docs) return callback(null, null)
@@ -111,7 +113,7 @@ function checkData(num, callback) {
   })
 }
 
-function addScore(data, callback) {
+function addScore(data: Score, callback: (err: Error | null) => void) {
   // data.time = String((new Date()).getTime())
   data.status = 'true'
   scoreDB.insert(data, (err, newdoc) => {
@@ -120,28 +122,28 @@ function addScore(data, callback) {
   })
 }
 
-function modifyScore(id, data, callback) {
+function modifyScore(id: string, data: Score, callback: (err: Error | null) => void) {
   scoreDB.update({ _id: id }, data, {}, (err, n) => {
     if (err) return callback(err)
     callback(null)
   })
 }
 
-function searchInput(target, query, callback) {
+function searchInput(target: string, query: string, callback: (docs: Score[] | null) => void) {
   if (query === '') return callback(null)
   // console.log(target, query)
   const s = new RegExp(lib.escapeReg(query), 'i')
   var searchQuery = new Object()
   searchQuery[target] = s
   // console.log(searchQuery)
-  scoreDB.find(searchQuery, (err, docs) => {
+  scoreDB.find(searchQuery, (err: Error, docs: Score[]) => {
     if (err) return callback(null)
     // console.log(docs)
     return callback(docs)
   })
 }
 
-function deleteScore(id, callback) {
+function deleteScore(id: string, callback: (result: true | null) => void) {
   loadData(id, (data) => {
     if (!data) return callback(null)
     data.status = false

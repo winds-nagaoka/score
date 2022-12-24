@@ -6,16 +6,18 @@ const boxDB = new NeDB({
   autoload: true,
 })
 
-function loadBox(callback) {
+type Document = { status: boolean; number: number; label: string; locate: string | boolean; time: boolean }
+
+function loadBox(callback: (docs: Document[]) => void) {
   boxDB
     .find({})
     .sort({ time: 1 })
-    .exec((err, docs) => {
+    .exec((err, docs: Document[]) => {
       return callback(docs)
     })
 }
 
-function loadData(id, callback) {
+function loadData(id: string, callback: (docs: Document | null) => void) {
   boxDB.findOne({ _id: id }, (err, docs) => {
     if (err) return callback(null)
     delete docs._id
@@ -23,7 +25,7 @@ function loadData(id, callback) {
   })
 }
 
-function addBox(callback) {
+function addBox(callback: (err: Error | null, label: string | null) => void) {
   boxDB
     .find({})
     .sort({ time: -1 })
@@ -48,7 +50,7 @@ function addBox(callback) {
     })
 }
 
-function modifyBox(id, locate, callback) {
+function modifyBox(id: string, locate: string, callback: (err: Error | true | null) => void) {
   loadData(id, (docs) => {
     if (!docs) return callback(true)
     docs.locate = locate
@@ -59,7 +61,7 @@ function modifyBox(id, locate, callback) {
   })
 }
 
-function deleteBox(id, callback) {
+function deleteBox(id: string, callback: (err: Error | true | null) => void) {
   loadData(id, (docs) => {
     if (!docs) return callback(true)
     docs.status = !docs.status
@@ -78,7 +80,7 @@ export const box = {
   deleteBox,
 }
 
-function calcLabel(value) {
+function calcLabel(value: number) {
   const valueMap = {
     0: 'A',
     1: 'B',
