@@ -1,5 +1,5 @@
-const path = require('path')
-const NeDB = require('nedb')
+import path from "path"
+import NeDB from "nedb"
 
 const deleteDB = new NeDB({
   filename: path.join(__dirname, 'database/delete.db'),

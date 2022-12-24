@@ -1,11 +1,10 @@
-const express = require('express')
+import express from "express"
 const app = express()
 
-const fs = require('fs')
-const path = require('path')
+import fs from "fs"
+import path from "path"
 
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 
 // ライブラリの読み込み
 const auth = require('./server/auth')
@@ -15,7 +14,7 @@ const mail = require('./server/mail')
 const lib = require('./server/lib')
 
 // HTTPを使用する(公開用)
-const http = require('http')
+import http from "http"
 app.listen(3000)
 
 const compression = require('compression')

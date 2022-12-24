@@ -1,7 +1,7 @@
-const path = require('path')
-const NeDB = require('nedb')
+import path from "path"
+import NeDB from "nedb"
 
-const lib = require('./lib')
+import { lib } from "./lib"
 // const auth = require('./auth')
 // const del = require('./delete')
 

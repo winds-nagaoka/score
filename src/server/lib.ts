@@ -37,6 +37,6 @@ function showTime () {
   return time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDate() + ' ' + z(time.getHours()) + ':' + z(time.getMinutes()) + ':' + z(time.getSeconds())
 }
 
-module.exports = {
+export const lib = {
   getHash, getAuthToken, getUniqueString, getRandomString, escapeReg, showTime
 }
