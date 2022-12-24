@@ -126,6 +126,6 @@ function changeAdmin (userid, request, callback) {
   })
 }
 
-module.exports = {
+export const auth = {
   getUser, addUser, deleteUser, login, checkToken, changeName, changeMail, checkPass, changeAdmin
 }

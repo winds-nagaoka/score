@@ -5,7 +5,7 @@ import { lib } from "./lib"
 // const auth = require('./auth')
 // const del = require('./delete')
 
-const del = require('./delete')
+import { del } from "./delete"
 
 const scoreDB = new NeDB({
   filename: path.join(__dirname, 'database/score.db'),
@@ -136,6 +136,6 @@ function deleteScore (id, callback) {
   })
 }
 
-module.exports = {
+export const score = {
   loadScore, loadScoreAll, loadData, loadLatest, checkData, addScore, modifyScore, searchInput, deleteScore
 }

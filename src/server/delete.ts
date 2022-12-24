@@ -13,6 +13,6 @@ function addDelete (data, callback) {
   })
 }
 
-module.exports = {
+export const del = {
   addDelete
 }

@@ -106,7 +106,7 @@ const mailSetting = {
 
 const smtp = nodeMailer.createTransport(mailSetting)
 
-const lib = require('./lib')
+import { lib } from "./lib"
 
 function sendEmailDovecot (user, list, callback) {
   console.log('[' + lib.showTime() + '] sendUpdateEmail to: ', user.email)
@@ -145,6 +145,6 @@ function sendEmailDovecot (user, list, callback) {
   })
 }
 
-module.exports = {
+export const mail = {
   listData, sendEmail, sendEmailDovecot
 }

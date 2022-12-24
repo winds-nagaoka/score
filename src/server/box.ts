@@ -67,7 +67,7 @@ function deleteBox (id, callback) {
   })
 }
 
-module.exports = {
+export const box = {
   loadBox, addBox, modifyBox, deleteBox
 }
 

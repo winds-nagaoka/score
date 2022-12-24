@@ -7,11 +7,11 @@ import path from "path"
 app.use(express.urlencoded({extended: true}))
 
 // ライブラリの読み込み
-const auth = require('./server/auth')
-const score = require('./server/score')
-const box = require('./server/box')
-const mail = require('./server/mail')
-const lib = require('./server/lib')
+import { auth } from "./server/auth"
+import { score } from "./server/score"
+import { box } from "./server/box"
+import { mail } from "./server/mail"
+import { lib } from "./server/lib"
 
 // HTTPを使用する(公開用)
 import http from "http"
