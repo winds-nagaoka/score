@@ -7,7 +7,25 @@ import { lib } from './lib'
 
 import { del } from './delete'
 
-type Score = { status: boolean | string }
+type Score = {
+  status: boolean | string
+  number: string
+  titleJa: string
+  titleEn: string
+  composer: string[]
+  arranger: string[]
+  publisher: string
+  genre: string
+  scoreType: string
+  copyMemo: string
+  scoreStatus: string
+  scoreLack: string
+  lackList: string[]
+  lendLocate: string
+  scoreBased: string
+  label: string
+  boxLabel: string
+}
 
 const scoreDB = new NeDB({
   filename: path.join(__dirname, 'database/score.db'),
