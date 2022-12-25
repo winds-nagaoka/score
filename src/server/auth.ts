@@ -5,7 +5,7 @@ import { lib } from './lib'
 import type { User } from '../types/types'
 
 const authDB = new NeDB({
-  filename: path.join(__dirname, 'database/auth.db'),
+  filename: path.join(__dirname, '../../database/auth.db'),
   autoload: true,
   timestampData: true,
 })

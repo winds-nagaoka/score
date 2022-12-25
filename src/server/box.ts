@@ -4,7 +4,7 @@ import NeDB from 'nedb'
 import type { Box } from '../types/types'
 
 const boxDB = new NeDB({
-  filename: path.join(__dirname, 'database/box.db'),
+  filename: path.join(__dirname, '../../database/box.db'),
   autoload: true,
 })
 

@@ -9,7 +9,7 @@ import { del } from './delete'
 import type { Score } from '../types/types'
 
 const scoreDB = new NeDB({
-  filename: path.join(__dirname, 'database/score.db'),
+  filename: path.join(__dirname, '../../database/score.db'),
   autoload: true,
   timestampData: true,
 })
