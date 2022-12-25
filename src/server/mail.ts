@@ -3,9 +3,9 @@ import nodeMailer from 'nodemailer'
 import { secrets } from 'secrets/mail'
 
 import { lib } from './lib'
-import type { User } from '../types/types'
+import type { Score, User } from '../types/types'
 
-function listData(docs: any) {
+function listData(docs: Score[]): string {
   var list = ''
   const title =
     '"status", "number", "score label", "box label", ' +
@@ -55,11 +55,11 @@ function listData(docs: any) {
   return title + list
 }
 
-function env(s: any) {
+function env(s: string) {
   return '"' + s + '"'
 }
 
-function listing(s: any) {
+function listing(s: string | string[]) {
   var list = ''
   for (var i = 0; i < s.length; i++) {
     if (s[i] !== '') {
@@ -72,7 +72,7 @@ function listing(s: any) {
   return result
 }
 
-function status(s: any) {
+function status(s: string | boolean) {
   if (s === 'true') {
     return 'OK'
   } else {
@@ -80,7 +80,7 @@ function status(s: any) {
   }
 }
 
-function scoreType(s: any) {
+function scoreType(s: string) {
   if (s === '1') {
     return 'コピー譜'
   } else {
@@ -88,7 +88,7 @@ function scoreType(s: any) {
   }
 }
 
-function scoreLack(s: any) {
+function scoreLack(s: string) {
   if (s === '2') {
     return '未確認'
   } else if (s === '1') {
@@ -98,7 +98,7 @@ function scoreLack(s: any) {
   }
 }
 
-function scoreStatus(s: any) {
+function scoreStatus(s: string) {
   if (s === '2') {
     return '貸出中'
   } else if (s === '1') {
@@ -108,7 +108,7 @@ function scoreStatus(s: any) {
   }
 }
 
-function scoreBased(s: any) {
+function scoreBased(s: string) {
   if (s === '1') {
     return '未処理'
   } else {
@@ -121,7 +121,7 @@ function sendEmail(
   name: string,
   subject: string,
   body: string,
-  attach: any,
+  attach: string,
   callback: (res: Response) => void
 ) {
   fetch(secrets?.requestMailPath || '', {
