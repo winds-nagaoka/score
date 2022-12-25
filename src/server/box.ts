@@ -1,30 +1,23 @@
 import path from 'path'
 import NeDB from 'nedb'
 
+import type { Box } from '../types/types'
+
 const boxDB = new NeDB({
   filename: path.join(__dirname, 'database/box.db'),
   autoload: true,
 })
 
-type Document = {
-  status: boolean
-  number: number
-  label: string
-  locate: string | boolean
-  time: number | boolean
-  _id?: string
-}
-
-function loadBox(callback: (docs: Document[]) => void) {
+function loadBox(callback: (docs: Box[]) => void) {
   boxDB
     .find({})
     .sort({ time: 1 })
-    .exec((err, docs: Document[]) => {
+    .exec((err, docs: Box[]) => {
       return callback(docs)
     })
 }
 
-function loadData(id: string, callback: (docs: Document | null) => void) {
+function loadData(id: string, callback: (docs: Box | null) => void) {
   boxDB.findOne({ _id: id }, (err, docs) => {
     if (err) return callback(null)
     delete docs._id
@@ -37,7 +30,7 @@ function addBox(callback: (err: Error | null, label: string | null) => void) {
     .find({})
     .sort({ time: -1 })
     .limit(1)
-    .exec((err, docs: Document[]) => {
+    .exec((err, docs: Box[]) => {
       if (err) return callback(err, null)
       let newDocs = docs
       if (newDocs.length === 0) {

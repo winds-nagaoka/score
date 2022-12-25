@@ -29,3 +29,32 @@ export type Session = {
   useragent: string
   version: string
 }
+
+export type Score = {
+  status: boolean | string
+  number: string
+  titleJa: string
+  titleEn: string
+  composer: string[]
+  arranger: string[]
+  publisher: string
+  genre: string
+  scoreType: string
+  copyMemo: string
+  scoreStatus: string
+  scoreLack: string
+  lackList: string[]
+  lendLocate: string
+  scoreBased: string
+  label: string
+  boxLabel: string
+}
+
+export type Box = {
+  status: boolean
+  number: number
+  label: string
+  locate: string | boolean
+  time: number | boolean
+  _id?: string
+}

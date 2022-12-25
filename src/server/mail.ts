@@ -1,6 +1,9 @@
 import fetch, { Response } from 'node-fetch'
-
+import nodeMailer from 'nodemailer'
 import { secrets } from 'secrets/mail'
+
+import { lib } from './lib'
+import type { User } from '../types/types'
 
 function listData(docs: any) {
   var list = ''
@@ -131,8 +134,6 @@ function sendEmail(
   }).then((res) => callback(res))
 }
 
-import nodeMailer from 'nodemailer'
-
 const mailSetting = {
   host: 'mail.winds-n.com',
   auth: {
@@ -145,9 +146,6 @@ const mailSetting = {
 }
 
 const smtp = nodeMailer.createTransport(mailSetting)
-
-import { lib } from './lib'
-import { User } from '../types/types'
 
 function sendEmailDovecot(user: User, list: string, callback: (result: boolean) => void) {
   console.log('[' + lib.showTime() + '] sendUpdateEmail to: ', user.email)

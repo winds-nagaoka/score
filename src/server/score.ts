@@ -6,26 +6,7 @@ import { lib } from './lib'
 // const del = require('./delete')
 
 import { del } from './delete'
-
-type Score = {
-  status: boolean | string
-  number: string
-  titleJa: string
-  titleEn: string
-  composer: string[]
-  arranger: string[]
-  publisher: string
-  genre: string
-  scoreType: string
-  copyMemo: string
-  scoreStatus: string
-  scoreLack: string
-  lackList: string[]
-  lendLocate: string
-  scoreBased: string
-  label: string
-  boxLabel: string
-}
+import type { Score } from '../types/types'
 
 const scoreDB = new NeDB({
   filename: path.join(__dirname, 'database/score.db'),
@@ -123,7 +104,7 @@ function loadLatest(callback: (docs: Score[] | null) => void) {
 }
 
 // 新規登録時の重複チェック
-function checkData(num: number, callback: (err: Error | null, docs: Score[] | null) => void) {
+function checkData(num: string, callback: (err: Error | null, docs: Score[] | null) => void) {
   scoreDB.findOne({ number: num }, (err, docs) => {
     if (err) return callback(err, null)
     if (!docs) return callback(null, null)

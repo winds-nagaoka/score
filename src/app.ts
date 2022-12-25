@@ -1,10 +1,4 @@
 import express from 'express'
-const app = express()
-
-import fs from 'fs'
-import path from 'path'
-
-app.use(express.urlencoded({ extended: true }))
 
 // ライブラリの読み込み
 import { auth } from './server/auth'
@@ -13,8 +7,13 @@ import { box } from './server/box'
 import { mail } from './server/mail'
 import { lib } from './server/lib'
 
-// HTTPを使用する(公開用)
-import http from 'http'
+import request from 'superagent'
+import type { Score, Session, User } from './types/types'
+
+const app = express()
+
+app.use(express.urlencoded({ extended: true }))
+
 app.listen(3000)
 
 import compression from 'compression'
@@ -87,9 +86,6 @@ app.post('/api/auth', (req, res) => {
     res.json({ status: true, token, user })
   })
 })
-
-import request from 'superagent'
-import type { Session, User } from './types/types'
 
 function authAPI(send: { session: Session }, callback: (user: User | false) => void) {
   request
@@ -314,7 +310,7 @@ app.post('/api/member/detail', (req, res) => {
   // }
 })
 
-function fixComposerArranger(data: any) {
+function fixComposerArranger(data: Score) {
   if (Array.isArray(data.composer)) {
     const composerCount = data.composer.length
     let blank = []
