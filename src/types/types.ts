@@ -35,15 +35,15 @@ export type Score = {
   number: string
   titleJa: string
   titleEn: string
-  composer: string[]
-  arranger: string[]
+  composer: string[] | string
+  arranger: string[] | string
   publisher: string
   genre: string
   scoreType: string
   copyMemo: string
   scoreStatus: string
   scoreLack: string
-  lackList: string[]
+  lackList: string[] | string
   lendLocate: string
   scoreBased: string
   label: string

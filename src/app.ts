@@ -317,7 +317,9 @@ function fixComposerArranger(data: Score) {
     for (let i = 0; i < composerCount; i++) {
       if (data.composer[i].trim() === '') blank.push(i)
     }
-    blank.reverse().map((j) => data.composer.splice(j, 1))
+    blank.reverse().map((j) => {
+      return typeof data.composer !== 'string' && data.composer.splice(j, 1)
+    })
     if (data.composer.length === 0) data.composer = ['']
   } else {
     data.composer = [data.composer.trim()]
@@ -328,7 +330,9 @@ function fixComposerArranger(data: Score) {
     for (let i = 0; i < arrangerCount; i++) {
       if (data.arranger[i].trim() === '') blank.push(i)
     }
-    blank.reverse().map((j) => data.arranger.splice(j, 1))
+    blank.reverse().map((j) => {
+      return typeof data.arranger !== 'string' && data.arranger.splice(j, 1)
+    })
     if (data.arranger.length === 0) data.arranger = ['']
   } else {
     data.arranger = [data.arranger.trim()]
@@ -339,7 +343,9 @@ function fixComposerArranger(data: Score) {
     for (let i = 0; i < lackListCount; i++) {
       if (data.lackList[i].trim() === '') blank.push(i)
     }
-    blank.reverse().map((j) => data.lackList.splice(j, 1))
+    blank.reverse().map((j) => {
+      return typeof data.lackList !== 'string' && data.lackList.splice(j, 1)
+    })
     if (data.lackList.length === 0) data.lackList = ['']
   } else {
     data.lackList = [data.lackList.trim()]
