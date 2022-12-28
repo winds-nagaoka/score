@@ -82,7 +82,7 @@ function loadScoreAll(callback: (docs: Score[]) => void) {
 
 function loadData(id: string, callback: (docs: Score | null) => void) {
   scoreDB.findOne({ _id: id }, (err, docs) => {
-    if (err) return callback(null)
+    if (err || !docs) return callback(null)
     delete docs._id
     callback(docs)
   })
