@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "prestart": "yarn build",
+    "start": "node ./build/app.js",
     "build": "tsc",
     "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,md}'"
   },
