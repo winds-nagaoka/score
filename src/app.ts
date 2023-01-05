@@ -13,6 +13,7 @@ import type { Score, Session, User } from './types/types'
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.listen(3000)
 
@@ -89,7 +90,7 @@ app.post('/api/auth', (req, res) => {
 
 function authAPI(send: { session: Session }, callback: (user: User | false) => void) {
   request
-    .post('https://auth.winds-n.com/auth')
+    .post('http://localhost:3003/auth')
     .type('form')
     .send(send)
     .end((error, response) => {
