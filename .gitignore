@@ -6,3 +6,6 @@
 
 # database
 /database/*
+
+# env
+.env
