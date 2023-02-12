@@ -10,6 +10,11 @@ import { lib } from './server/lib'
 import request from 'superagent'
 import type { Score, Session, User } from './types/types'
 
+import 'dotenv/config'
+
+const ADD_USER_HASH = process.env.ADD_USER_HASH
+const AUTH_API_PATH = process.env.AUTH_API_PATH
+
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
@@ -41,11 +46,7 @@ app.post('/api/adduser', (req, res) => {
   console.log('[' + lib.showTime() + '] api/adduser: ' + userid + ', (passwd), ' + key)
   // パラメータ確認
   if (userid === '' || passwd === '') return res.json({ status: false })
-  if (
-    lib.getHash(key) !==
-    '0002a3739bc2f722677cb2d9c00450c5b3da7b5972846fef1db51963ba84229eef66baca5251931ce876cc92bda7eb7628a7eed7277d3208d06d13f5ed2acaeb'
-  )
-    return res.json({ status: false })
+  if (lib.getHash(key) !== ADD_USER_HASH) return res.json({ status: false })
   console.log('[api] adduser: ' + key + ': OK')
   // 既存ユーザーの確認
   auth.getUser(userid, (user) => {
@@ -90,7 +91,7 @@ app.post('/api/auth', (req, res) => {
 
 function authAPI(send: { session: Session }, callback: (user: User | false) => void) {
   request
-    .post('http://localhost:3003/auth')
+    .post(AUTH_API_PATH + '/auth')
     .type('form')
     .send(send)
     .end((error, response) => {

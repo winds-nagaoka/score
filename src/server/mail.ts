@@ -1,9 +1,13 @@
 import fetch, { Response } from 'node-fetch'
 import nodeMailer from 'nodemailer'
-import secrets from 'secrets'
 
 import { lib } from './lib'
 import type { Score, User } from '../types/types'
+import 'dotenv/config'
+
+const MAIL_REQUEST_PATH = process.env.MAIL_REQUEST_PATH as string
+const MAIL_SEND_PASS = process.env.MAIL_SEND_PASS as string
+const MAIL_DOVECOT_PASS_NOREPLY = process.env.MAIL_DOVECOT_PASS_NOREPLY as string
 
 function listData(docs: Score[]): string {
   var list = ''
@@ -124,13 +128,13 @@ function sendEmail(
   attach: string,
   callback: (res: Response) => void
 ) {
-  fetch(secrets.mail.requestMailPath, {
+  fetch(MAIL_REQUEST_PATH, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ sendpass: secrets.mail.sendPass, to, name, subject, body, attach }),
+    body: JSON.stringify({ sendpass: MAIL_SEND_PASS, to, name, subject, body, attach }),
   }).then((res) => callback(res))
 }
 
@@ -138,7 +142,7 @@ const mailSetting = {
   host: 'mail.winds-n.com',
   auth: {
     user: 'noreply@winds-n.com',
-    pass: secrets.mail.dovecotPass.noreply,
+    pass: MAIL_DOVECOT_PASS_NOREPLY,
     port: '465',
   },
   tls: { rejectUnauthorized: false },
