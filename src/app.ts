@@ -1,4 +1,6 @@
 import express from 'express'
+import request from 'superagent'
+import compression from 'compression'
 
 // ライブラリの読み込み
 import { auth } from './server/auth'
@@ -7,7 +9,6 @@ import { box } from './server/box'
 import { mail } from './server/mail'
 import { lib } from './server/lib'
 
-import request from 'superagent'
 import type { Score, Session, User } from './types/types'
 
 import 'dotenv/config'
@@ -22,7 +23,6 @@ app.use(express.json())
 
 app.listen(3005)
 
-import compression from 'compression'
 app.use(
   compression({
     threshold: 0,
