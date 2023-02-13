@@ -2,7 +2,10 @@
 /node_modules
 
 # build
-/client/build/bundle*
+/build
 
 # database
-/server/database/*
+/database/*
+
+# env
+.env
